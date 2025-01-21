@@ -17,16 +17,21 @@ Vagrant.configure("2") do |config|
   # Provisionar la máquina para instalar Apache
   config.vm.provision "shell", inline: <<-SHELL
     # Actualizar los paquetes del sistema
-    sudo apt-get update -y
+    apt-get update -y
     
     # Instalar Apache
-    sudo apt-get install apache2 -y
+    apt-get install apache2 -y
     
     # Habilitar el servicio de Apache para que arranque al inicio
-    sudo systemctl enable apache2
+    systemctl enable apache2
     
     # Iniciar el servicio de Apache
-    sudo systemctl start apache2
+    systemctl start apache2
+
+    # instalacion del OpenJDK
+    apt-get install -y openjdk-11-jdk
+
+
   SHELL
 
  
