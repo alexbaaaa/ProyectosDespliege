@@ -56,6 +56,7 @@ Vagrant.configure("2") do |config|
     systemctl restart tomcat9
 
     # Instalacion de Maven 
+    apt-get -y install maven
   SHELL
 
  
