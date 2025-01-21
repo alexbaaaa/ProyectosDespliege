@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "public_network"
 
   # Configuración de puertos
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
  
   # Configuración de la carpeta compartida entre el host y la VM si es necesario
   config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
@@ -28,10 +28,17 @@ Vagrant.configure("2") do |config|
     # Iniciar el servicio de Apache
     systemctl start apache2
 
-    # instalacion del OpenJDK
+    # Instalacion del OpenJDK
     apt-get install -y openjdk-11-jdk
 
+    # Instalacion del tomcat9
+    apt-get install -y tomcat9
 
+    # Configuracion del tomcat9
+    groupadd tomcat9
+    useradd -s /bin/false -g tomcat9 -d /etc/tomcat9 tomcat9
+    # Iniciamos el tomcat9
+    systemctl start tomcat9
   SHELL
 
  
