@@ -42,11 +42,20 @@ Vagrant.configure("2") do |config|
     systemctl start tomcat9
 
     # Copiamos el archivo tomcat9-users.xml en su directorio
+    rm /etc/tomcat9/tomcat-users.xml
     cp /vagrant/tomcat-users.xml /etc/tomcat9/
-
+    
     # Instalacion del administrador web
     apt install -y tomcat9-admin
 
+    # Copiamos el archivo context.xml en su directorio
+    rm /usr/share/tomcat9-admin/host-manager/META-INF/context.xml
+    cp /vagrant/context.xml /usr/share/tomcat9-admin/host-manager/META-INF/
+
+    # Reiniciamos el tomcat9 despues de los cambios
+    systemctl restart tomcat9
+
+    # Instalacion de Maven 
   SHELL
 
  
