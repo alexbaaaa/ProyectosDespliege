@@ -61,6 +61,10 @@ Vagrant.configure("2") do |config|
     # Configuracion del settings.xml
     rm /etc/maven/settings.xml
     cp /vagrant/settings.xml /etc/maven/
+
+    # Configuracion del pom.xml de la aplicacion
+    rm /home/vagrant/tomcat-war/pom.xml
+    cp /vagrant/pom.xml /home/vagrant/tomcat-war/
   SHELL
 
  
