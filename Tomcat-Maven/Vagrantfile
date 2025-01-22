@@ -57,6 +57,10 @@ Vagrant.configure("2") do |config|
 
     # Instalacion de Maven 
     apt-get -y install maven
+
+    # Configuracion del settings.xml
+    rm /etc/maven/settings.xml
+    cp /vagrant/settings.xml /etc/maven/
   SHELL
 
  
